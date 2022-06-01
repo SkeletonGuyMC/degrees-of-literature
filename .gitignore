@@ -27,6 +27,10 @@ original_scripts/
 renpy/
 *.rpa
 *.chr
+DDLC.sh
+DDLC.py
+COPYRIGHT.txt
+
 
 # The log file and other misc things #
 ######################################

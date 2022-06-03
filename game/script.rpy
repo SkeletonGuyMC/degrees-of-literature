@@ -266,22 +266,39 @@ image lemon 3bz = im.Composite((960, 960), (0, 0), "mod_assets/lemon/3b.png", (0
 image lemon 4 = im.Composite((960, 960), (0, 0), "mod_assets/lemon/4cl.png", (0, 0), "mod_assets/lemon/1cr.png", (0, 0), "mod_assets/lemon/g.png")
 
 image bg hallway = "mod_assets/hallway.png"
-image living_room = "mod_assets/living_room.png"
+image bg living_room = "mod_assets/living_room.png"
+image bg izaya = "mod_assets/izaya.png"
+image bg classroom_history = "mod_assets/classroom_history.png"
+image bg school_roof = "mod_assets/school_roof.png"
+image bg fujimori = "mod_assets/fujimori.png"
+image bg makoto = "mod_assets/makoto.png"
+image bg haruo = "mod_assets/haruo.png"
+image bg entrance = "mod_assets/entrance.png"
+image bg tanaka = "mod_assets/tanaka.png"
+image bg akemi = "mod_assets/akemi.png"
 
 image bg residential_night = "mod_assets/residential_night.png"
 image bg house_night = "mod_assets/house_night.png"
 image bg car_night = "mod_assets/only_used_like_once_lol.png"
 image bg living_room_night = "mod_assets/living_room_night.png"
 image bg bedroom_night = "mod_assets/bedroom_night.png"
+image bg izaya_night = "mod_assets/izaya_night.png"
+image bg school_roof_night = "mod_assets/school_roof_night.png"
+image bg fujimori_night = "mod_assets/fujimori_night.png"
+image bg makoto_night = "mod_assets/makoto_night.png"
+image bg haruo_night "mod_assets/haruo_night.png"
+image bg entrance_night = "mod_assets/entrance_night.png"
+image bg tanaka_night = "mod_assets/tanaka_night.png"
+image bg akemi_night = "mod_assets/akemi_night.png"
 
 # stats screen code
 screen stats_screen():
 
     tag menu
     key "mouseup_1" action NullAction()
-    key "space" action NullAction()
-    key "enter" action NullAction()
-    key "return" action NullAction()
+    key "space" action [Hide(screen="stats_screen")]
+    key "enter" action [Hide(screen="stats_screen")]
+    key "return" action [Hide(screen="stats_screen")]
 
 
     ## This use statement includes the game_menu screen inside this one. The
@@ -309,9 +326,9 @@ screen social_screen():
 
     tag menu
     key "mouseup_1" action NullAction()
-    key "space" action NullAction()
-    key "enter" action NullAction()
-    key "return" action NullAction()
+    key "space" action [Hide(screen="social_screen")]
+    key "enter" action [Hide(screen="social_screen")]
+    key "return" action [Hide(screen="social_screen")]
 
     if sayori_li == 1:
         $ s_relationshipname = "Sayori {color=#fc8ae3}(Dating){/color}"
@@ -440,7 +457,7 @@ screen social_screen():
             elif crimelevel >= 30:
                 text "The police {color=#E90000}have enough evidence to detain you{/color}.\n"
             elif crimelevel >= 1:
-                text "The police {color=#483DEE}have you on their records, but don\'t have enough evidence for an arrest{/color}.\n"
+                text "The police {color=#483DEE}are investigating you{/color}.\n"
             elif crimelevel == 0:
                 text "The police {color=#26E94D}consider you innocent{/color}.\n"
 
@@ -454,9 +471,9 @@ screen journal_screen():
 
     tag menu
     key "mouseup_1" action NullAction()
-    key "space" action NullAction()
-    key "enter" action NullAction()
-    key "return" action NullAction()
+    key "space" action [Hide(screen="journal_screen")]
+    key "enter" action [Hide(screen="journal_screen")]
+    key "return" action [Hide(screen="journal_screen")]
 
     if daynumber == 1:
         $ day = "Sunday"
@@ -499,9 +516,9 @@ screen music_screen():
 
     tag menu
     key "mouseup_1" action NullAction()
-    key "space" action NullAction()
-    key "enter" action NullAction()
-    key "return" action NullAction()
+    key "space" action [Hide(screen="music_screen")]
+    key "enter" action [Hide(screen="music_screen")]
+    key "return" action [Hide(screen="music_screen")]
 
 
     ## This use statement includes the game_menu screen inside this one. The

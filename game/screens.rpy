@@ -2087,3 +2087,248 @@ style nvl_button:
 
 style nvl_button_text:
     properties gui.button_text_properties("nvl_button")
+
+
+# this screen shows the ingame UI and updates your stats.
+screen textbutton_screen():
+    vbox:
+        textbutton "Stats" action [Show(screen="stats_screen")]
+        textbutton "Social" action [Show(screen="social_screen")]
+        textbutton "Journal" action [Show(screen="journal_screen")]
+        textbutton "Music" action [Show(screen="music_screen")]
+        if minute < 10:
+            text "[hour]:0[minute]" xpos 1150 ypos -145
+        else:
+            text "[hour]:[minute]" xpos 1150 ypos -145
+        text "[day]" xpos 1150 ypos -150
+        text "[date][th] of" xpos 1150 ypos -155
+        text "[month]" xpos 1150 ypos -160
+        if date == 1 or date == 21:
+            $ th = "st"
+        elif date == 2 or date == 22:
+            $ th = "nd"
+        elif date == 3 or date == 23:
+            $ th = "rd"
+        else:
+            $ th = "th"
+        if minute >= 60:
+            $ minute -= 60
+            $ hour += 1
+        if hour >= 24:
+            $ date += 1
+            $ daynumber += 1
+            $ hour -= 24
+            $ daycount += 1
+        if daynumber >= 8:
+            $ daynumber -= 7
+            $ weekcount += 1
+        $ functioningdate = date
+        if date >= 28:
+            $ monthnumber += 1
+            $ monthcount += 1
+        if daynumber == 1:
+            $ day = "Sunday"
+        elif daynumber == 2:
+            $ day = "Monday"
+        elif daynumber == 3:
+            $ day = "Tuesday"
+        elif daynumber == 4:
+            $ day = "Wednesday"
+        elif daynumber == 5:
+            $ day = "Thursday"
+        elif daynumber == 6:
+            $ day = "Friday"
+        elif daynumber == 7:
+            $ day = "Saturday"
+        if monthnumber == 1:
+            $ month = "January"
+        elif monthnumber == 2:
+            $ month = "February"
+        elif monthnumber == 3:
+            $ month = "March"
+        elif monthnumber == 4:
+            $ month = "April"
+        elif monthnumber == 5:
+            $ month = "May"
+        elif monthnumber == 6:
+            $ month = "June"
+        elif monthnumber == 7:
+            $ month = "July"
+        elif monthnumber == 8:
+            $ month = "August"
+        elif monthnumber == 9:
+            $ month = "September"
+        elif monthnumber == 10:
+            $ month = "October"
+        elif monthnumber == 11:
+            $ month = "November"
+        elif monthnumber == 12:
+            $ month = "December"
+        if monthnumber >= 13:
+            $ monthnumber = 1
+            $ yearcount += 1
+        if minute <= -1:
+            $ minute = 0
+        if hour <= -1:
+            $ hour = 0
+        if fatigue >= 101:
+            $ fatigue = 100
+        if comfort >= 101:
+            $ comfort = 100
+        if health >= 101:
+            $ health = 100
+        if stress >= 100:
+            $ stress = 100
+        if fatigue <= -1:
+            $ fatigue = 0
+        if comfort <= -1:
+            $ comfort = 0
+        if health <= -1:
+            $ health = 0
+        if stress <= -1:
+            $ stress = 0
+        if s_love >= 101:
+            $ s_love = 100
+        if m_love >= 101:
+            $ m_love = 100
+        if n_love >= 101:
+            $ n_love = 100
+        if y_love >= 100:
+            $ y_love = 100
+        if s_love <= -1:
+            $ s_love = 0
+        if m_love <= -1:
+            $ m_love = 0
+        if n_love <= -1:
+            $ n_love = 0
+        if y_love <= -1:
+            $ y_love = 0
+        if l_love <= -1:
+            $ l_love = 0
+        if l_love >= 101:
+            $ l_love = 100
+        if l_addiction <= -1:
+            $ l_addiction = 0
+        if l_addiction >= 101:
+            $ l_addiction = 100
+        if l_jealousy <= -1:
+            $ l_jealousy = 0
+        if l_jealousy >= 101:
+            $ l_jealousy = 100
+        if s_happiness >= 101:
+            $ s_happiness = 100
+        if m_awareness >= 101:
+            $ m_awareness = 100
+        if n_trust >= 101:
+            $ n_trust = 100
+        if y_confidence >= 100:
+            $ y_confidence = 100
+        if s_happiness <= -1:
+            $ s_happiness = 0
+        if m_awareness <= -1:
+            $ m_awareness = 0
+        if n_trust <= -1:
+            $ n_trust = 0
+        if y_confidence <= -1:
+            $ y_confidence = 0
+        if s_jealousy >= 101:
+            $ s_jealousy = 100
+        if m_jealousy >= 101:
+            $ m_jealousy = 100
+        if n_jealousy >= 101:
+            $ n_jealousy = 100
+        if y_jealousy >= 100:
+            $ y_jealousy = 100
+        if s_jealousy <= -1:
+            $ s_jealousy = 0
+        if m_jealousy <= -1:
+            $ m_jealousy = 0
+        if n_jealousy <= -1:
+            $ n_jealousy = 0
+        if y_jealousy <= -1:
+            $ y_jealousy = 0
+        if physique >= 100:
+            if not physiquerank == "S":
+                $ physique -= 100
+                if physiquerank == "F":
+                    $ physiquerank = "D"
+                elif physiquerank == "D":
+                    $ physiquerank = "C"
+                elif physiquerank == "C":
+                    $ physiquerank = "B"
+                elif physiquerank == "B":
+                    $ physiquerank = "A"
+                elif physiquerank == "A":
+                    $ physiquerank = "S"
+            else:
+                $ physique = 100
+
+        if intelligence >= 100:
+            if not intelligencerank == "S":
+                $ intelligence -= 100
+                if intelligencerank == "F":
+                    $ intelligencerank = "D"
+                elif intelligencerank == "D":
+                    $ intelligencerank = "C"
+                elif intelligencerank == "C":
+                    $ intelligencerank = "B"
+                elif intelligencerank == "B":
+                    $ intelligencerank = "A"
+                elif intelligencerank == "A":
+                    $ intelligencerank = "S"
+            else:
+                $ intelligence = 100
+
+        if social >= 100:
+            if not socialrank == "S":
+                $ social -= 100
+                if socialrank == "F":
+                    $ socialrank = "D"
+                elif socialrank == "D":
+                    $ socialrank = "C"
+                elif socialrank == "C":
+                    $ socialrank = "B"
+                elif socialrank == "B":
+                    $ socialrank = "A"
+                elif socialrank == "A":
+                    $ socialrank = "S"
+            else:
+                $ social = 100
+
+        if skulduggery >= 100:
+            if not skulduggeryrank == "S":
+                $ skulduggery -= 100
+                if skulduggeryrank == "F":
+                    $ skulduggeryrank = "D"
+                elif skulduggeryrank == "D":
+                    $ skulduggeryrank = "C"
+                elif skulduggeryrank == "C":
+                    $ skulduggeryrank = "B"
+                elif skulduggeryrank == "B":
+                    $ skulduggeryrank = "A"
+                elif skulduggeryrank == "A":
+                    $ skulduggeryrank = "S"
+            else:
+                $ skulduggery = 100
+
+        if combat >= 201:
+            $ combat = 200
+        if running >= 201:
+            $ running = 200
+        if learning >= 201:
+            $ learning = 200
+        if gaming >= 201:
+            $ gaming = 200
+        if publicspeaking >= 201:
+            $ publicspeaking = 200
+        if teamwork >= 201:
+            $ teamwork = 200
+        if theft >= 201:
+            $ theft = 200
+        if charisma >= 201:
+            $ charisma = 200
+
+        if hour >= 9 and hour <= 14 and not day == "Saturday" and not day == "Sunday" and school_break == "False":
+            $ schoolinsession = 1
+        else:
+            $ schoolinsession = 0
